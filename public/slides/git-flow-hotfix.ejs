@@ -1,0 +1,26 @@
+<section>
+  <h2>GIT FLOW: hotfix</h2>
+
+  <small>fix something already released</small>
+
+  <table>
+    <tr>
+      <th>Branch off from</th>
+      <td>master</td>
+    </tr>
+    <tr>
+      <th>Merge back into</th>
+      <td>master &amp; develop</td>
+    </tr>
+    <tr>
+      <th>Naming convention</th>
+      <td>hotfix/*</td>
+    </tr>
+  </table>
+
+
+<%- include('./sh-code', {
+  shFile: './git-flow-hotfix.sh'
+}) %>
+
+</section>

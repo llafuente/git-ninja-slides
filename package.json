@@ -1,0 +1,16 @@
+{
+  "name": "git-slides",
+  "version": "1.0.0",
+  "description": "Git presentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis Lafuentes",
+  "license": "ISC",
+  "dependencies": {
+    "ansi-to-html": "^0.6.2",
+    "express": "^4.15.3",
+    "socket.io": "^2.0.2"
+  }
+}

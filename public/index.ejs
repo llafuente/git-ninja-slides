@@ -1,0 +1,361 @@
+<!-- http://lab.hakim.se/reveal-js/#/10/2 -->
+<html>
+  <head>
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/reveal.css"  rel="stylesheet" />
+    <link rel="stylesheet" href="/css/black.css"  rel="stylesheet" />
+    <link rel="stylesheet" href="/css/default.min.css"  rel="stylesheet" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css"  rel="stylesheet" />
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/highlight.min.js"></script>
+    <style>
+body {
+  background: url(/images/bg.jpg);
+}
+em {
+  /*
+  color: #C44545;
+  color: rgb(39, 69, 60);
+  text-shadow: 1px 1px 5px white;
+  */
+  color: rgb(130, 113, 79);
+  color: rgb(79, 96, 130);
+  color: rgb(36, 43, 59);
+  color: rgb(117, 72, 87);
+}
+pre {
+  padding: 2em;
+  background: black;
+}
+.reveal table th, .reveal table td {
+  color: white;
+}
+
+.reveal h1 {
+  text-shadow: 5px 5px black;
+  font-size: 2.25em;
+}
+.reveal h2,
+.reveal h3 {
+  text-shadow: 4px 4px black;
+}
+.reveal h4 {
+  text-shadow: 3px 3px black;
+}
+
+.reveal a {
+  color: rgb(79, 96, 130);
+}
+
+.reveal a:hover {
+  color: rgb(36, 43, 59);
+  text-shadow: inherit;
+}
+
+
+.reveal code {
+  background-color: white;
+  color: rgb(39, 69, 60);
+  font-family: monospace;
+  border-radius: 4px;
+  overflow: hidden;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+</style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+
+<%- include('./slides/welcome') %>
+<%- include('./slides/myself') %>
+<%- include('./slides/definition') %>
+<%- include('./slides/git-0-what-is-git') %>
+<%- include('./slides/git-0-svn-vs-git') %>
+
+<%- include('./slides/git-1-working-tree.ejs') %>
+<%- include('./slides/git-2-workflow') %>
+
+<%- include('./slides/sh-playable-example', {
+  title: 'Example',
+  shFile: './example-0-workflow.sh',
+  id: 'intro'
+}) %>
+
+
+
+<%- include('./slides/git-4-0-intro') %>
+
+
+<%- include('./slides/git-4-1-clone') %>
+<%- include('./slides/git-4-2-push') %>
+<%- include('./slides/git-4-2-push-multiple-remotes') %>
+<%- include('./slides/git-4-3-pull') %>
+
+<%- include('./slides/git-branch-intro') %>
+<%- include('./slides/git-branch') %>
+<%- include('./slides/sh-playable-example', {
+  title: 'Branching: RAW',
+  shFile: './example-1-branches.sh',
+  id: 'branching_raw'
+}) %>
+
+
+<%- include('./slides/git-flow-intro') %>
+<%- include('./slides/git-flow') %>
+<%- include('./slides/git-flow-init') %>
+<%- include('./slides/git-flow-feature') %>
+<%- include('./slides/git-flow-release') %>
+<%- include('./slides/git-flow-hotfix') %>
+<%- include('./slides/sh-playable-example', {
+  title: 'GITFLOW: merge',
+  shFile: './git-flow-merge.sh',
+  id: 'git_flow_merge'
+}) %>
+
+<%- include('./slides/sh-playable-example', {
+  title: 'GITFLOW: rebase',
+  shFile: './git-flow-rebase.sh',
+  id: 'git_flow_merge'
+}) %>
+
+
+<%- include('./slides/merge-vs-rebase') %>
+<%- include('./slides/merge-vs-rebase-merge') %>
+<%- include('./slides/merge-vs-rebase-rebase') %>
+<%- include('./slides/merge-vs-rebase-veredict') %>
+
+<%- include('./slides/git-tools') %>
+
+
+<!-- -->
+<section>
+  <h1><a href="https://git-scm.com/docs/git-bisect" target="_blank">git bisect</a></h1>
+
+  <p>Use binary search to find the commit that introduced a bug</p>
+
+</section>
+
+<section>
+  <img src="/images/bisect.png" />
+</section>
+
+<section>
+
+<%- include('./slides/sh-playable-example', {
+  title: 'Example',
+  shFile: './example-bisect.sh',
+  id: 'biset'
+}) %>
+
+</section>
+
+
+
+<!-- -->
+<section>
+  <h1>git blame</h1>
+  <p>Show what revision and author last modified each line of a file</p>
+  <small>Blame can hurt your/his/her feelings, you are warned</small>
+  <br />
+  <img src="images/i-know-it-was-you.gif" />
+</section>
+
+
+
+
+<!-- -->
+<section>
+  <h1>Example</h1>
+  <pre style="font-size: 1rem;"><code>3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200   1) &lt;bbva-section>
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200   2)   &lt;bbva-section-header>
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200   3)     &lt;span>Solicitud de alta de un sistema de almacenamiento&lt;/span>
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200   4)   &lt;/bbva-section-header>
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200   5)
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200   6)   &lt;bbva-section-content
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200   7)     (onLoad)="reloadData()"
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200   8)     (onReload)="reloadData()"
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200   9)     [error]="error"
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  10)     [loading]="loading">
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  11)
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  12)     &lt;form #theForm="ngForm" (ngSubmit)="save()">
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  13)       &lt;div class="row">
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  14)         &lt;div class="col-sm-4">
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  15)           &lt;md-input-container>
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  16)             &lt;input
+43996783 (ADRIAN                2017-04-26 18:23:13 +0200  17)               mdInput
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  18)               name="Nombre"
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  19)               [(ngModel)]="newStorage.filesystemName"
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  20)               placeholder="Nombre"
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  21)               required="required" />
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  22)           &lt;/md-input-container>
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  23)         &lt;/div>
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  24)
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  25)         &lt;div class="col-sm-8">
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  26)           &lt;md-input-container>
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  27)             &lt;input
+43996783 (ADRIAN                2017-04-26 18:23:13 +0200  28)             mdInput
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  29)             name="Descripcion"
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  30)             [(ngModel)]="newStorage.filesystemDescription"
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  31)             placeholder="Descipci├│n" />
+8235d9b3 (Luis Lafuente Morales 2017-04-26 12:36:43 +0200  32)           &lt;/md-input-container>
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  33)         &lt;/div>
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  34)       &lt;/div>
+02f1d793 (ADRIAN                2017-04-24 12:14:33 +0200  35)       &lt;br/>
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  36)
+00000000 (Not Committed Yet     2017-06-06 18:45:14 +0200  37)       &lt;!-- NOTE this is not used -->
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  38)       &lt;div class="row">
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  39)         &lt;div class="col-sm-4">
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  40)           &lt;md-select
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  41)             placeholder="Tipo"
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  42)             [(ngModel)]="selectedType"
+3d6180c8 (ADRIAN                2017-04-21 12:42:48 +0200  43)             name="Tipo"
+...</code></pre>
+</section>
+
+
+
+
+<section>
+  <h1>Note</h1>
+
+  <p>You can blame anytime (not just in the present)</p>
+
+  <pre><code>
+git checkout sha1
+git blame file
+    </code></pre>
+
+</section>
+
+<section>
+  <h1>Changelog</h1>
+
+  <h4><a href="https://github.com/conventional-changelog/standard-version" target="_blank">standard-version</a></h4>
+
+  <h4><a href="https://github.com/llafuente/ng2-vs-backend/blob/master/CHANGELOG.md" target="_blank">example project</a></h4>
+</section>
+
+
+
+
+<!-- -->
+<section>
+  <h2>Opensource concepts</h2>
+
+  <p>Author vs Committer</p>
+  <p>Fork - Pull request</p>
+
+</section>
+
+
+
+
+<!-- -->
+<section>
+
+<%- include('./slides/sh-playable-example', {
+  title: 'Author vs Committer',
+  shFile: './example-full-log.sh',
+  id: 'biset'
+}) %>
+
+</section>
+
+
+
+
+<!-- -->
+<section>
+  <h3>Pull requests: Update PR</h3>
+
+  <p>This branch is x commits behind xx:xx</p>
+
+  <small><a href="https://github.com/manvsrice/unity-platformer" target="_blank">example</a></small>
+
+<pre id="branching-result" style="display:none; overflow-y: scroll; max-height: 500px;">
+</pre>
+
+<pre id="branching-code">
+<code class="bash">
+git remote add upstream https://github.com/&lt;user>/&lt;repo>
+git fetch upstream
+
+git checkout &lt;branch&gt;
+git merge upstream/&lt;branch&gt;
+</code></pre>
+</section>
+
+
+
+
+<!-- -->
+<section data-background="images/the-end.jpg">
+</section>
+
+
+      </div>
+    </div>
+    <script src="/js/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+      });
+
+      Reveal.configure({ pdfMaxPagesPerSlide: 1 });
+
+      $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+          console.log(block);
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      var lastResultEl = null;
+      socket.on('bash-result', function(msg) {
+        console.log(msg);
+        //$(lastResultEl).append($('<span>' + msg + '</span>'));
+        $(lastResultEl).html($(lastResultEl).html() + msg);
+
+        var wtf    = $(lastResultEl);
+        var height = wtf[0].scrollHeight;
+        wtf.scrollTop(height);
+
+      });
+    </script>
+    <script>
+      $(".play-terminal").bind('click', function(e) {
+        console.log(e);
+        e.preventDefault();
+        $(e.target).hide();
+
+        const cid = $(e.target).data("code")
+        const rid = $(e.target).data("result")
+
+        const codeEl = $("#" + cid);
+        codeEl.hide();
+
+        const resultEl = $("#" + rid);
+        resultEl.show();
+        lastResultEl = resultEl;
+
+
+        socket.emit('bash', codeEl.text());
+      });
+    </script>
+
+
+  </body>
+</html>

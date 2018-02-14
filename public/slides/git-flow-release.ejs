@@ -1,0 +1,25 @@
+<section>
+  <h2>GIT FLOW: release</h2>
+  <small>move develop code to master</small>
+
+  <table>
+    <tr>
+      <th>Branch off from</th>
+      <td>develop</td>
+    </tr>
+    <tr>
+      <th>Merge back into</th>
+      <td>master</td>
+    </tr>
+    <tr>
+      <th>Naming convention</th>
+      <td>release/*</td>
+    </tr>
+  </table>
+
+
+<%- include('./sh-code', {
+  shFile: './git-flow-release.sh'
+}) %>
+
+</section>

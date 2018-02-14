@@ -1,0 +1,12 @@
+<section>
+  <h1><%= title %><a
+    data-code="<%= id %>-code"
+    data-result="<%= id %>-result"
+    class="play-terminal"><i class="fa fa-play-circle-o" aria-hidden="true"></i></a></h1>
+
+<pre id="<%= id %>-result"
+  style="display:none; overflow-y: scroll; max-height: 500px;"></pre>
+
+<pre id="<%= id %>-code">
+<code class="bash"><%= include(shFile) %></code></pre>
+</section>
