@@ -87,12 +87,24 @@ pre {
     <div class="reveal">
       <div class="slides">
 
-
 <%- include('./slides/welcome') %>
+
+<section>
+  <h2>Download git</h2>
+<a href="http://cmder.net/" target="_blank">http://cmder.net/</a>
+</section>
+
+<section>
+  <h2>Clone this slides</h2>
+git clone <a href="https://github.com/llafuente/git-ninja-slides" target="_blank">https://github.com/llafuente/git-ninja-slides</a>
+</section>
+
 <%- include('./slides/myself') %>
 <%- include('./slides/definition') %>
 <%- include('./slides/git-0-what-is-git') %>
 <%- include('./slides/git-0-svn-vs-git') %>
+
+
 
 <%- include('./slides/git-1-working-tree.ejs') %>
 <%- include('./slides/git-2-workflow') %>
@@ -381,13 +393,13 @@ git merge upstream/&lt;branch&gt;
 
 <section>
   <h2>Install</h2>
-  <code>
+  <pre><code>
 USER="xxx"
 PASSWORD="xxx"
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py --proxy="http://${USER}:${PASSWORD}@proxyvip.igrupobbva:8080"
 pip install pre-commit --proxy http://${USER}:${PASSWORD}@proxyvip.igrupobbva:8080/
-  </code>
+</code></pre>
 </section>
 
 <section>
