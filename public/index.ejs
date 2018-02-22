@@ -380,11 +380,29 @@ git merge upstream/&lt;branch&gt;
 </section>
 
 <section>
+  <h2>Install</h2>
+  <code>
+USER="xxx"
+PASSWORD="xxx"
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py --proxy="http://${USER}:${PASSWORD}@proxyvip.igrupobbva:8080"
+pip install pre-commit --proxy http://${USER}:${PASSWORD}@proxyvip.igrupobbva:8080/
+  </code>
+</section>
+
+<section>
 <%- include('./slides/sh-playable-example', {
   title: 'Example',
   shFile: '../examples/pre-commit.sh',
   id: 'pre-commit'
 }) %>
+</section>
+
+<section>
+  <h2>Personalize git</h2>
+
+  <p><a href="https://github.com/llafuente/dotfiles/blob/master/.gitconfig" target="_blank">.gitconfig</a></p>
+
 </section>
 
 

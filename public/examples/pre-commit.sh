@@ -4,15 +4,21 @@ cd $(mktemp -d)
 
 git init
 
+git remote add origin 'https://github.com/llafuente/git-slides-test'
+
 pre-commit install
 
-cat <<DELIM | tee .pre-commit-hooks.yaml
--   id: trailing-whitespace
-    name: Trim Trailing Whitespace
-    description: This hook trims trailing whitespace.
-    entry: trailing-whitespace-fixer
-    language: python
-    types: [text]
+cat <<DELIM | tee .pre-commit-config.yaml
+repos:
+-   repo: https://github.com/llafuente/git-slides-test
+    sha: v0.9.4
+    hooks:
+    -   id: trailing-whitespace
+        name: Trim Trailing Whitespace
+        description: This hook trims trailing whitespace.
+        entry: trailing-whitespace-fixer
+        language: python
+        types: [text]
 
 DELIM
 
