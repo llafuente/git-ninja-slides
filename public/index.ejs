@@ -22,36 +22,54 @@ em {
   color: rgb(79, 96, 130);
   color: rgb(36, 43, 59);
   color: rgb(117, 72, 87);
+  color: rgb(255, 80, 80);
+  text-shadow: 0.5px 0.5px black;
 }
 pre {
-  padding: 2em;
   background: black;
+  padding: 2px !important;
+  border-radius: 4px;
+  overflow: hidden;
 }
 .reveal table th, .reveal table td {
   color: white;
 }
 
+.reveal a {
+  color: rgb(79, 96, 130);
+  color: rgb(39, 46, 100);
+  color: rgb(80, 255, 80);
+  text-shadow: 0.5px 0.5px black;
+}
+
+.reveal a:hover {
+  color: rgb(140, 255, 140);
+  text-shadow: inherit;
+}
+
+.reveal h1 .fa {
+  margin-left: 0.25em;
+  font-size: 0.45em;
+}
+.reveal h1 a,
 .reveal h1 {
   text-shadow: 5px 5px black;
   font-size: 2.25em;
 }
 .reveal h2,
+.reveal h2 a,
+.reveal h3 a,
 .reveal h3 {
   text-shadow: 4px 4px black;
 }
+.reveal h4 a,
 .reveal h4 {
   text-shadow: 3px 3px black;
 }
 
-.reveal a {
-  color: rgb(79, 96, 130);
+.reveal td {
+  vertical-align: top;
 }
-
-.reveal a:hover {
-  color: rgb(36, 43, 59);
-  text-shadow: inherit;
-}
-
 
 .reveal code {
   background-color: white;
@@ -81,8 +99,8 @@ pre {
 
 <%- include('./slides/sh-playable-example', {
   title: 'Example',
-  shFile: './example-0-workflow.sh',
-  id: 'intro'
+  shFile: '../examples/git-workflow.sh',
+  id: 'git-workflow'
 }) %>
 
 
@@ -98,9 +116,14 @@ pre {
 <%- include('./slides/git-branch-intro') %>
 <%- include('./slides/git-branch') %>
 <%- include('./slides/sh-playable-example', {
-  title: 'Branching: RAW',
-  shFile: './example-1-branches.sh',
-  id: 'branching_raw'
+  title: 'using merge',
+  shFile: '../examples/git-merge.sh',
+  id: 'git-merge'
+}) %>
+<%- include('./slides/sh-playable-example', {
+  title: 'using rebase',
+  shFile: '../examples/git-rebase.sh',
+  id: 'git-rebase'
 }) %>
 
 
@@ -111,15 +134,15 @@ pre {
 <%- include('./slides/git-flow-release') %>
 <%- include('./slides/git-flow-hotfix') %>
 <%- include('./slides/sh-playable-example', {
-  title: 'GITFLOW: merge',
-  shFile: './git-flow-merge.sh',
-  id: 'git_flow_merge'
+  title: 'merge',
+  shFile: '../examples/git-flow-merge.sh',
+  id: 'git-flow-merge'
 }) %>
 
 <%- include('./slides/sh-playable-example', {
-  title: 'GITFLOW: rebase',
-  shFile: './git-flow-rebase.sh',
-  id: 'git_flow_merge'
+  title: 'rebase',
+  shFile: '../examples/git-flow-rebase.sh',
+  id: 'git-flow-rebase'
 }) %>
 
 
@@ -128,14 +151,20 @@ pre {
 <%- include('./slides/merge-vs-rebase-rebase') %>
 <%- include('./slides/merge-vs-rebase-veredict') %>
 
+<%- include('./slides/git-tag') %>
+
 <%- include('./slides/git-tools') %>
 
 
 <!-- -->
 <section>
-  <h1><a href="https://git-scm.com/docs/git-bisect" target="_blank">git bisect</a></h1>
+  <h2><a href="https://git-scm.com/docs/git-bisect" target="_blank">git bisect</a></h2>
 
   <p>Use binary search to find the commit that introduced a bug</p>
+
+<%- include('./slides/sh-code', {
+  shFile: '../examples/git-bisect.sh'
+}) %>
 
 </section>
 
@@ -147,8 +176,8 @@ pre {
 
 <%- include('./slides/sh-playable-example', {
   title: 'Example',
-  shFile: './example-bisect.sh',
-  id: 'biset'
+  shFile: '../examples/git-bisect-example.sh',
+  id: 'git-bisect'
 }) %>
 
 </section>
@@ -248,6 +277,7 @@ git blame file
 
   <p>Author vs Committer</p>
   <p>Fork - Pull request</p>
+  <p>GPG</p>
 
 </section>
 
@@ -259,8 +289,8 @@ git blame file
 
 <%- include('./slides/sh-playable-example', {
   title: 'Author vs Committer',
-  shFile: './example-full-log.sh',
-  id: 'biset'
+  shFile: '../examples/git-full-log.sh',
+  id: 'git-full-log'
 }) %>
 
 </section>
@@ -289,12 +319,92 @@ git merge upstream/&lt;branch&gt;
 </code></pre>
 </section>
 
+<!-- -->
+<section>
+<h2>GPG</h2>
 
+<p>sign and verify tags and commits</p>
+
+<a href="https://help.github.com/articles/signing-commits-with-gpg/" target="_blank">
+  https://help.github.com/articles/signing-commits-with-gpg/
+</a>
+
+<%- include('./slides/sh-code', {
+  shFile: '../examples/gpg.sh'
+}) %>
+
+</section>
+
+
+<section>
+  <h3>Git Hooks</h3>
+
+  <p>Hooks are programs you can place in a hooks directory to trigger actions at certain points in git’s execution.</p>
+  <p>located at: <em>.git/hooks</em></p>
+</section>
+
+<section>
+  <h3>Git Hooks</h3>
+  <table>
+    <tr>
+      <th>Local</th>
+      <th>Remoto</th>
+    </tr>
+    <tr>
+      <td>
+        <ul>
+          <li>pre-commit</li>
+          <li>prepare-commit-msg</li>
+          <li>commit-msg</li>
+          <li>post-commit</li>
+          <li>post-checkout</li>
+          <li>pre-rebase</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>pre-receive</li>
+          <li>update</li>
+          <li>post-receive</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2><a href="https://pre-commit.com/" target="_blank">pre-commit</a></h2>
+
+  <p>A framework for managing and maintaining multi-language pre-commit hooks.</p>
+
+</section>
+
+<section>
+<%- include('./slides/sh-playable-example', {
+  title: 'Example',
+  shFile: '../examples/pre-commit.sh',
+  id: 'pre-commit'
+}) %>
+</section>
 
 
 <!-- -->
 <section data-background="images/the-end.jpg">
 </section>
+
+<section data-background="images/qa.png" data-background-size="700px">
+  <h1>Q/A</h1>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+</section>
+
 
 
       </div>
@@ -312,8 +422,8 @@ git merge upstream/&lt;branch&gt;
 
       Reveal.configure({ pdfMaxPagesPerSlide: 1 });
 
-      $(document).ready(function() {
-        $('pre code').each(function(i, block) {
+      jQuery(document).ready(function() {
+        jQuery('pre code').each(function(i, block) {
           console.log(block);
           hljs.highlightBlock(block);
         });
@@ -326,28 +436,31 @@ git merge upstream/&lt;branch&gt;
       var lastResultEl = null;
       socket.on('bash-result', function(msg) {
         console.log(msg);
-        //$(lastResultEl).append($('<span>' + msg + '</span>'));
-        $(lastResultEl).html($(lastResultEl).html() + msg);
+        //jQuery(lastResultEl).append(jQuery('<span>' + msg + '</span>'));
+        jQuery(lastResultEl).html(jQuery(lastResultEl).html() + msg);
 
-        var wtf    = $(lastResultEl);
+        var wtf    = jQuery(lastResultEl);
         var height = wtf[0].scrollHeight;
         wtf.scrollTop(height);
 
       });
     </script>
     <script>
-      $(".play-terminal").bind('click', function(e) {
-        console.log(e);
+      jQuery(".play-terminal").bind('click', function(e) {
+        const anchor = e.target.tagName == "A" ? e.target : jQuery(e.target).parent("a").get(0);
+
+        console.log("play-terminal", anchor);
         e.preventDefault();
-        $(e.target).hide();
+        jQuery(e.target).hide();
 
-        const cid = $(e.target).data("code")
-        const rid = $(e.target).data("result")
+        const cid = jQuery(anchor).data("code")
+        const rid = jQuery(anchor).data("result")
+        console.log("code", cid, "result", rid);
 
-        const codeEl = $("#" + cid);
+        const codeEl = jQuery("#" + cid);
         codeEl.hide();
 
-        const resultEl = $("#" + rid);
+        const resultEl = jQuery("#" + rid);
         resultEl.show();
         lastResultEl = resultEl;
 
@@ -359,3 +472,6 @@ git merge upstream/&lt;branch&gt;
 
   </body>
 </html>
+<!--
+git extras
+  -->

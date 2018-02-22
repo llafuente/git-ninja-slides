@@ -22,7 +22,7 @@ git status
 
 git stash list
 # NOTE: powershell require single quotes: git 'show stash@{0}'
-git show stash@{0}
+git show 'stash@{0}'
 
 git stash pop
 git status
@@ -35,7 +35,8 @@ git commit -m "update tracked-file.txt"
 # shortcut, add everything in the working copy
 echo "zzz" >> tracked-file.txt
 
-git diff --no-pager
+# do not use pager, just print
+git --no-pager diff
 
 git commit -a -m "update again tracked-file.txt"
 
